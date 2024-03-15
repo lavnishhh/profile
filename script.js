@@ -16,3 +16,17 @@ Array.from(document.querySelectorAll('.squares > div > div')).forEach(async (chi
 });
 
 // document.getElementById().style.backgroundColor = 'hsv()'
+
+let scrollPos = window.scrollY
+
+window.addEventListener('scroll', (event)=>{
+    document.querySelector('.scroll-hint').classList.toggle('hidden', true)
+})
+
+
+setInterval(()=>{
+    if(window.scrollY == scrollPos){
+        document.querySelector('.scroll-hint').classList.toggle('hidden', false)
+    }
+    scrollPos = window.scrollY
+}, 2000)
