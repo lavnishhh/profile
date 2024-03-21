@@ -1,16 +1,28 @@
-languages = ['JavaScript', 'C', 'Python', 'C#', 'Dart', 'SQL']
-frameworks = ['React.js', 'Node.js', 'Flutter', 'JQuery', 'Firebase', 'Cloudera']
-software = ['Power BI', 'VSCode', 'Excel', 'Word', 'Postman', 'Unity', 'Blender']
+const languages = ['JavaScript', 'C', 'Python', 'C#', 'Dart', 'SQL']
+const frameworks = ['React.js', 'Node.js', 'Flutter', 'JQuery', 'Firebase', 'Cloudera']
+const software = ['Power BI', 'VSCode', 'Excel', 'Word', 'Postman', 'Unity', 'Blender']
 
-full = [].concat(languages, frameworks, software)
+let full = [].concat(languages, frameworks, software)
+
+let current = {};
+
+function setRandomText(child, index){
+    let text = full[Math.floor(Math.random()*full.length)];
+    while(Object.values(current).includes(text)){
+        text = full[Math.floor(Math.random()*full.length)];
+    }
+    current[index] = text
+    child.innerHTML = text
+    child.style.backgroundColor = `hsl(${Math.floor(Math.random() * 255)}, 82.7%, 76.3%)`;
+
+}
 
 Array.from(document.querySelectorAll('.squares > div > div')).forEach(async (child, index) => {
-    child.style.backgroundColor = `hsl(${Math.floor(Math.random() * 255)}, 82.7%, 76.3%)`;
-    child.textContent = full[Math.ceil(Math.random()*full.length)]
+    setRandomText(child, index)
     await new Promise((res)=>{setTimeout(res, index*3000/9)})
+    setRandomText(child, index)
     setInterval(()=>{
-        child.textContent = full[Math.round(Math.random()*full.length)]
-        child.style.backgroundColor = `hsl(${Math.floor(Math.random() * 255)}, 82.7%, 76.3%)`;
+        setRandomText(child, index)
         // child.style.backgroundColor = `hsl(${Math.floor(Math.random() * 255)}, 72.7%, 50.6%)`;
     }, 3000)
 });
