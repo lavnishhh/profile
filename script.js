@@ -104,14 +104,14 @@ if (urlParams.get('interactive') == "true") {
 //projects
 ignore = ['profile-new', 'tshirt-qr-url', 'neonite']
 
-k1 = 'iJMm2TSP96g4Fd5ikI'
+k1 = ''
 
 document.querySelector('#button-projects-extra').addEventListener('click', ()=>{
     document.querySelector('#project-list-extra').parentElement.classList.toggle('hidden')
     document.querySelector('#button-projects-extra').parentElement.scrollIntoView()
 })
 
-k2 = 'B1ieCeG14d3L2Em8Nj'
+k2 = ''
 
 g = 'ghp'
 
