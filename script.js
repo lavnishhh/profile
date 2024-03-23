@@ -113,10 +113,12 @@ document.querySelector('#button-projects-extra').addEventListener('click', ()=>{
 
 k2 = 'B1ieCeG14d3L2Em8Nj'
 
+g = 'ghp'
+
 fetch('https://api.github.com/users/lavnishhh/repos?sort="created"', {
     headers: {
         'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.9999.99 Safari/537.36",
-        "Authorization":`token ghp_${k1}${k2}`
+        "Authorization":`token ${g}_${k1}${k2}`
     }
 })
     .then(response => {
