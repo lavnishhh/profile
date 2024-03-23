@@ -104,21 +104,15 @@ if (urlParams.get('interactive') == "true") {
 //projects
 ignore = ['profile-new', 'tshirt-qr-url', 'neonite']
 
-k1 = ''
-
 document.querySelector('#button-projects-extra').addEventListener('click', ()=>{
     document.querySelector('#project-list-extra').parentElement.classList.toggle('hidden')
     document.querySelector('#button-projects-extra').parentElement.scrollIntoView()
 })
 
-k2 = ''
-
-g = 'ghp'
-
 fetch('https://api.github.com/users/lavnishhh/repos?sort="created"', {
     headers: {
         'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.9999.99 Safari/537.36",
-        "Authorization":`token ${g}_${k1}${k2}`
+        "Authorization":"token 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"
     }
 })
     .then(response => {
