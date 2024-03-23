@@ -109,12 +109,12 @@ document.querySelector('#button-projects-extra').addEventListener('click', ()=>{
     document.querySelector('#button-projects-extra').parentElement.scrollIntoView()
 })
 
-console.log(process.env.API_GITHUB)
+console.log(secrets.API_GITHUB)
 
 fetch('https://api.github.com/users/lavnishhh/repos?sort="created"', {
     headers: {
         'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.9999.99 Safari/537.36",
-        "Authorization":`token ${process.env.API_GITHUB}`
+        "Authorization":`token ${secrets.API_GITHUB}`
     }
 })
     .then(response => {
