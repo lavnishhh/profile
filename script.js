@@ -112,7 +112,7 @@ document.querySelector('#button-projects-extra').addEventListener('click', ()=>{
 fetch('https://api.github.com/users/lavnishhh/repos?sort="created"', {
     headers: {
         'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.9999.99 Safari/537.36",
-        "Authorization":"token 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"
+        "Authorization":"token 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"
     }
 })
     .then(response => {
