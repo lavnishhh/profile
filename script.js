@@ -111,7 +111,7 @@ document.querySelector('#button-projects-extra').addEventListener('click', ()=>{
 
 const githubToken = 'API_KEY_PLACEHOLDER';
 
-fetch('https://api.github.com/users/lavnishhh/repos?sort="created"', {
+fetch('projects.js', {
     headers: {
         'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.9999.99 Safari/537.36",
         "Authorization":`token ${githubToken}`
