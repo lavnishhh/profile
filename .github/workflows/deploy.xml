@@ -1,24 +1,24 @@
-name: Deploy to GitHub Pages
+name: Fetch GitHub Projects
 
 on:
- push:
-    branches:
-      - main
+  schedule:
+    - cron: '0 0 * * *' # Runs daily at midnight
 
 jobs:
- deploy:
+  fetch-projects:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v2
-
-      - name: Replace placeholder with secret
+        
+      - name: Fetch GitHub Projects
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          sed -i 's/API_KEY_PLACEHOLDER/${{ secrets.API_GITHUB }}/g' script.js
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+          curl -H "Authorization: token $GH_TOKEN" https://api.github.com/users/lavnishhh/repos > projects.js
+          
+      - name: Commit & Push changes
+        uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
-          publish_dir: ./
+          commit_message: "Update projects.js"
+          commit_options: "-a"
