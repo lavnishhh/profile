@@ -109,17 +109,17 @@ document.querySelector('#button-projects-extra').addEventListener('click', ()=>{
     document.querySelector('#button-projects-extra').parentElement.scrollIntoView()
 })
 
-const githubToken = 'API_KEY_PLACEHOLDER';
+//API auth removed due to github's restriction on publishing API keys.
+const githubToken = '';
 
-fetch('https://api.github.com/users/lavnishhh/repos?sort="created"', {
+fetch('https://api.hello.com/', {
     headers: {
         'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.9999.99 Safari/537.36",
-        "Authorization":`token ${githubToken}`
     }
 })
     .then(response => {
         if (!response.ok) {
-            throw new Error('Error fetching projects');
+            throw new Error('Rate limit exceeded.');
         }
         console.log(response)
         return response.json();
@@ -169,6 +169,31 @@ fetch('https://api.github.com/users/lavnishhh/repos?sort="created"', {
         })
     })
     .catch(error => {
+        let count = 0;
+        let project_list = '#project-list'
+        for (let i = 0; i < 14; i++) {
+            
+            project = {'name':'Rate Limit Exceeded.', 'language':'&ltlanguage&gt'}
+            
+            if(ignore.includes(project)){
+                continue
+            }
+
+            count ++
+            let element_string = '<div class=" justify-between flex flex-col text-center aspect-square bg-white text-black p-5 w-1/3 border-2 border-black"></div>'
+            
+            if(count>9){
+                project_list = '#project-list-extra'
+                element_string = '<div class=" justify-between flex flex-col text-center aspect-square bg-white text-black p-5 w-1/3 md:w-1/5 border-2 border-black"></div>'
+            }
+            
+
+            projectElement = fromHTML(element_string)
+            projectElement.innerHTML = `<div>${project.name}</div><div class=" bg-red-500 rounded-full" style="font-size:0.7rem; background-color: hsl(${Math.floor(Math.random() * 255)}, 82.7%, 76.3%)">${project.language}</div>`
+
+            document.querySelector(project_list).appendChild(projectElement)
+
+        }
         console.error('Error fetching projects:', error);
     });
 
