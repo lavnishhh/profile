@@ -112,7 +112,7 @@ document.querySelector('#button-projects-extra').addEventListener('click', ()=>{
 //API auth removed due to github's restriction on publishing API keys.
 const githubToken = '';
 
-fetch('https://api.hello.com/', {
+fetch('https://api.github.com/users/lavnishhh/repos?sort="created"', {
     headers: {
         'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.9999.99 Safari/537.36",
     }
