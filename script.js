@@ -41,6 +41,9 @@ window.addEventListener('scroll', (event) => {
 
 setInterval(() => {
     if (window.scrollY == scrollPos) {
+        if(document.body.scrollHeight - (window.scrollY + window.screen.availHeight) < 200 ){
+            return
+        }
         if(mode == 'interactive'){
             return
         }
@@ -121,7 +124,6 @@ fetch('https://api.github.com/users/lavnishhh/repos?sort="created"', {
         if (!response.ok) {
             throw new Error('Rate limit exceeded.');
         }
-        console.log(response)
         return response.json();
     })
     .then(data => {
@@ -144,6 +146,9 @@ fetch('https://api.github.com/users/lavnishhh/repos?sort="created"', {
 
             projectElement = fromHTML(element_string)
             projectElement.innerHTML = `<div>${project.name}</div><div class=" bg-red-500 rounded-full" style="font-size:0.7rem; background-color: hsl(${Math.floor(Math.random() * 255)}, 82.7%, 76.3%)">${project.language}</div>`
+            projectElement.addEventListener('click', ()=>{
+                window.open(project.html_url, '_blank')
+            })
             // const languageElements = fromHTML('<div class="flex flex-wrap"></div>')
             // projectElement.appendChild(languageElements)
 
