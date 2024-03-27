@@ -105,7 +105,7 @@ if (urlParams.get('interactive') == "true") {
 
 
 //projects
-ignore = ['profile-new', 'tshirt-qr-url', 'neonite']
+ignore = ['profile-new', 'tshirt-qr-url', 'beta.lynku.co']
 
 document.querySelector('#button-projects-extra').addEventListener('click', ()=>{
     document.querySelector('#project-list-extra').parentElement.classList.toggle('hidden')
@@ -131,7 +131,7 @@ fetch('https://api.github.com/users/lavnishhh/repos?sort="created"', {
         let project_list = '#project-list'
         Array.from(data).forEach((project, index)=>{
 
-            if(ignore.includes(project)){
+            if(ignore.includes(project.name)){
                 return
             }
 
