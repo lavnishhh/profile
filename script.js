@@ -2,8 +2,8 @@ let mode = 'static'
 
 //block random text
 const languages = ['JavaScript', 'C', 'Python', 'C#', 'Dart', 'SQL']
-const frameworks = ['React.js', 'Node.js', 'Flutter', 'JQuery', 'Firebase', 'Cloudera']
-const software = ['Power BI', 'VSCode', 'Excel', 'Word', 'Postman', 'Unity', 'Blender']
+const frameworks = ['React.js', 'Node.js', 'Flutter', 'JQuery', 'Firebase']
+const software = ['Power BI', 'VSCode', 'Excel', 'Word', 'Postman', 'Unity', 'Blender', 'Docker']
 
 let full = [].concat(languages, frameworks, software)
 
